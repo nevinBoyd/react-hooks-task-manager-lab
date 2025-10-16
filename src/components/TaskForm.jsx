@@ -8,9 +8,11 @@ function TaskForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const trimmed = taskName.trim();
+
     if (taskName.trim() === "") return;
 
-    addTask(taskName);
+    addTask(trimmed);
     setTaskName("");
   }
 
