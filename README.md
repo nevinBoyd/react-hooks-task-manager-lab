@@ -133,3 +133,72 @@ Ensure the application:
 - Submits new task with `useId`
 - Marks tasks as complete.
 - Filters tasks shown on the page by a search input.
+
+---------------
+
+# Lab: Task Manager
+
+## Overview
+In this lab, we built a Task Manager application that allows users to add, complete, and search tasks.  
+The app demonstrates how to manage global state with the Context API, use hooks effectively, and persist data to a local backend.
+
+## Task 1: Define the Problem
+The frontend was provided but lacked interactivity and shared state management.
+
+As a user, I should be able to:
+- Add a new task using a form (`useId`)
+- Mark tasks as completed (`useContext`)
+- Search tasks dynamically (`useState`)
+
+## Task 2: Determine the Design
+Determine which hooks and props were needed for each component.
+
+- Global state (`useContext`)
+- Persistent values (`useEffect`)
+- Unique IDs (`useId`)
+
+## Task 3: Develop the Code
+
+### Implement Global State with `useContext`
+- Created `TaskContext.jsx` to hold and manage all tasks globally  
+- Wrapped `<App />` in `<TaskProvider>` inside `main.jsx`  
+- Used `useEffect` to fetch and store data from `http://localhost:6001/tasks`
+
+### Add New Tasks
+- Implemented `addTask` to add new tasks and update both local and backend state  
+- Used `useId` to provide a unique label identifier  
+- Cleared input on submission
+
+### Toggle Task Completion
+- Implemented `toggleTask` to switch task completion state  
+- Synced changes with backend using `PATCH` requests  
+- Updated UI state immediately for real-time feedback
+
+### Implement Search Functionality
+- Used `useState` in `SearchBar.jsx` to track search input  
+- Filtered visible tasks dynamically in `App.jsx`
+
+## Task 4: Test and Refine
+- Verified all CRUD operations using the provided Vitest test suite  
+- Confirmed correct behavior for task addition, filtering, and toggling  
+- Tested in browser to validate live updates and state syncing
+
+## Task 5: Document and Maintain
+- Committed frequently with descriptive messages  
+- Ensured clear, consistent component separation and hook usage  
+- Pushed final build to GitHub once all tests passed
+
+## Learning Takeaways
+- Learned how to manage shared state with React Context  
+- Practiced creating and updating state immutably  
+- Reinforced how `useState`, `useEffect`, and `useContext` interact  
+- Strengthened understanding of component separation and reusability  
+- Saw how front-end state syncs seamlessly with a backend API  
+- Improved ability to debug, test, and verify app behavior with Vitest
+
+## Tools and Resources
+- React  
+- Context API  
+- `useState`, `useEffect`, `useId`  
+- JSON Server (`http://localhost:6001/tasks`)  
+- Vite environment
