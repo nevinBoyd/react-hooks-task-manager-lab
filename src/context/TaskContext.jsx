@@ -9,7 +9,7 @@ function TaskProvider({ children }) {
     // fetch backend tasks
     useEffect(() => {
         fetch("http://localhost:6001/tasks")
-            .then((r) = r.json())
+            .then((r) => r.json())
             .then((data) => setTasks(data))
             .catch((err) => console.error("Error fetching tasks:"));
     }, []);
