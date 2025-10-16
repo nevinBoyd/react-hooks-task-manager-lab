@@ -1,6 +1,26 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-export const TaskContext = createContext();
+// create context
+const TaskContext = createContext();
 
-export function TaskProvider({ children }) {
+function TaskProvider({ children }) {
+    const [tasks, setTasks] = useState([]);
+
+    // fetch backend tasks
+    useEffect(() => {
+        fetch("http://localhost:6001/tasks")
+            .then((r) = r.json())
+            .tehn((data) => setTasks(data))
+            .catch((err) => console.error("Error fetching tasks:"));
+    }, []);
+
+    return (
+        <TaskContext.Provider value={{ tasks }}>
+            {children}
+        </TaskContext.Provider>
+    );
 }
+
+
+export { TaskContext, TaskProvider };
+
